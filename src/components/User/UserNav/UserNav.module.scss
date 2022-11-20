@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  background-color: #007aff;
+  width: 100%;
+  height: 50px;
+  justify-content: center;
+  .link {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    .item {
+      align-items: center;
+      display: flex;
+      margin: 3px 0 3px 0;
+      padding: 3px 10px 3px 10px;
+      &:hover {
+        border-radius: 5px;
+        cursor: pointer;
+        background: #2c91f5bf;
+      }
+      i {
+        margin: 3px;
+      }
+    }
+  }
+}
+
+
+
+
