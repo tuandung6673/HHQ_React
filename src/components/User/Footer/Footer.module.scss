@@ -1,0 +1,42 @@
+.wrapper {
+  padding-top: 15px;
+}
+
+.main_footer {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: center;
+  grid-gap: 15px;
+}
+
+.pre_footer {
+  width: 60%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  .header {
+    padding-bottom: 5px;
+    color: #007aff;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  p {
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.wrapper_footer{ 
+  display: flex;
+  justify-content: center;
+  padding-top: 18px;
+}
+
+.bgr {
+  img {
+    width: 100%;
+  }
+}

@@ -1,10 +1,13 @@
 /* eslint-disable no-unused-vars */
 import { useEffect, useState } from "react"
 import classes from './GioiThieu.module.scss'
+import GioiThieuRight from "./gioi-thieu-right/GioiThieuRight";
+import { useParams } from "react-router-dom";
+const queryString = require('query-string');
+
 function GioiThieu() {
   const [news , setNews]=useState([]);
-  const queryString = require('query-string');
-
+  const id = useParams();
   const params = {
     categoryId : '',
     filter: '',
@@ -12,35 +15,28 @@ function GioiThieu() {
     pageSize: 1000,
     status : '1'
   }
-
-  const params2 = {
-    filter: '',
-    offSet: 0,
-    pageSize: 1000,
+  if(id.id) {
+    params.categoryId = id.id 
   }
-  const queryParams = queryString.stringify(params)
-  const queryParams2 = queryString.stringify(params2)
+  const queryParams = queryString.stringify(params) 
 
-  useEffect(()=> {
-    fetchData();
-  }, [])
-
-  const fetchData = async () => {
-    await Promise.all([
-      fetch(`https://hhq.somee.com/api/News?${queryParams}`),
-      fetch(`https://hhq.somee.com/api/NewsCategory?${queryParams2}`) 
-    ])
-    .then(res => Promise.all(res.map(r => r.json())))
-    .then((result) => {
-      newList(result)
+  useEffect(() => {
+    fetch(`https://hhq.somee.com/api/News?${queryParams}`) 
+    .then(res => res.json())
+    .then(data => {
+      newsList(data);
     })
-  }
+  }, [])
   
-  function newList(dataFetch) {
-    setNews(dataFetch[0].data.data.map((neww, index) => {
+  function gioiThieuChiTiet(id) {
+    window.location.href = "/gioi-thieu/" + id;
+  }
+
+  function newsList(dataFetch) {
+    setNews(dataFetch.data.data.map((neww, index) => {
       return (
-        <div className={classes.new} key={index}>
-          <img src={neww.avatar} alt="" />
+        <div className={classes.new} key={index} onClick={() => gioiThieuChiTiet(neww.id)}>
+          <img className={classes.image} src={neww.avatar} alt="" />
           <p>{neww.title}</p>
           <div className={classes.infor}>
             <i className="pi pi-clock">{neww.createdDate}</i>
@@ -49,7 +45,7 @@ function GioiThieu() {
         </div>
       )
     }))
-  } 
+  }
 
   return (
     <div className={classes.wrapper}>
@@ -59,9 +55,16 @@ function GioiThieu() {
       <div style={{width: '100%'}}>
         <div className={classes.content}>
           <div className={classes.content_left}>
+            <div style={{display: 'flex', width: '100%'}}>
+              <div className={classes.empty}></div>
+              <h3>Tin tức</h3>
+            </div>
+            <br></br>
             {news}
           </div>
-          <div className={classes.content_right}>B</div>
+          <div className={classes.content_right}>
+            <GioiThieuRight />
+          </div>
         </div>
       </div>
     </div>
