@@ -58,7 +58,7 @@ function Footer () {
             </div>
           </div>
         </div>
-        <hr style={{width: '60%', margin: '0 auto', marginTop: '18px'}}></hr>
+        <hr style={{width: '65%', margin: '0 auto', marginTop: '18px'}}></hr>
         <div className={classes.wrapper_footer}>
           <div className={classes.main_footer}>
             {footer}

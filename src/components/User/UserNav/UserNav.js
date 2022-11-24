@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import classes from './UserNav.module.scss'
 function UserNav() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
   useEffect(() => {
     fetch('https://hhq.somee.com/api/Menu?Screen=user&Status=1&offSet=0&pageSize=0')
       .then(res => res.json())
@@ -24,8 +24,10 @@ function UserNav() {
   })
   
   return (
-    <div className={classes.wrapper}>
-      {listMenu}
+    <div>
+      <div className={classes.wrapper}>
+        {listMenu}
+      </div>
     </div>
   )
 } 

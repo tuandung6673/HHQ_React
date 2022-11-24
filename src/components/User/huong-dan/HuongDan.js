@@ -33,7 +33,6 @@ function HuongDan() {
   }
 
   function getList(data) {
-    console.log('id', id);
     setGuide(data.data.data.map((gd, index) => {
       return (
         <li key={index} className={gd.id === id ? classes.active : ''} onClick={() => clickGuide(gd)}>
@@ -42,6 +41,7 @@ function HuongDan() {
       )
     }))
   }
+  
   return (
     <div className={classes.wrapper}>
       <div className={classes.content}>
