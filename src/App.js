@@ -22,15 +22,15 @@ function App() {
       <User />
       <Routes>
         {/* <Route path='/' element={<User/>}></Route> */}
-        <Route path='/tong-quan' element={<TongQuan />}></Route>
-        <Route path='/gioi-thieu' element={<GioiThieu />} ></Route>
-        <Route path='/gioi-thieu/:id' element={<GioiThieuChiTiet />} ></Route>
-        <Route path='/gioi-thieu/danh-muc/:id' element={<GioiThieu />}></Route>
-        <Route path='/kiem-tra-nang-luc' element={<KiemTraNangLuc />} ></Route>
-        <Route path='/huong-dan' element={<HuongDan />} ></Route>
-        <Route path='/tuyen-dung' element={<TuyenDung />} ></Route>
-        <Route path='/tuyen-dung/:id' element={<TuyenDungChiTiet />}></Route>
-        <Route path='/quan-tri' element={<Admin/>}></Route>
+        <Route path='tong-quan' element={<TongQuan />}></Route>
+        <Route path='gioi-thieu' element={<GioiThieu />} ></Route>
+        <Route path='gioi-thieu/:id' element={<GioiThieuChiTiet />} ></Route>
+        <Route path='gioi-thieu/danh-muc/:id' element={<GioiThieu />}></Route>
+        <Route path='kiem-tra-nang-luc' element={<KiemTraNangLuc />} ></Route>
+        <Route path='huong-dan' element={<HuongDan />} ></Route>
+        <Route path='tuyen-dung' element={<TuyenDung />} ></Route>
+        <Route path='tuyen-dung/:id' element={<TuyenDungChiTiet />}></Route>
+        <Route path='quan-tri' element={<Admin/>}></Route>
       </Routes>
       <Footer />
     </BrowserRouter>
