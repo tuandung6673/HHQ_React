@@ -6,9 +6,11 @@
 .header {
   font-weight: bold;
   font-size: 20px;
+  margin: 20px 0;
 }
 
 .action {
+  margin-bottom: 15px;
   width: 100%;
   text-align: center;
   .act_btn {
@@ -19,5 +21,38 @@
     background-color: #0080ff;
     border: none;
     border-radius: 9px;
+  }
+}
+
+.pre_content {
+  i {
+    margin: 8px 0;
+  }
+  ul {
+    padding-left: 40px;
+  }
+}
+
+.main_content {
+  p {
+    margin: 16px 0;
+  }
+  ol {
+    padding-left: 40px;
+  }
+}
+
+.jobInput {
+  width: 500px;
+}
+
+.field {
+  .input {
+    margin: 20px 0;
+    width: 100%;
+    .inputField {
+      width: 100%;
+  
+    }
   }
 }
