@@ -1,0 +1,22 @@
+.classRooms {
+  position: relative;
+  img {
+    filter: blur(2px);
+    border-radius: 10px;
+  }
+}
+
+.child {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-weight: bold;
+  font-size: 35px;
+  color: #fff;
+}
+
+.swipper {
+  border-radius: 10px;
+  border: 2px solid black;
+}

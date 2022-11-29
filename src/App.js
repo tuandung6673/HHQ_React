@@ -22,6 +22,7 @@ function App() {
       <User />
       <Routes>
         {/* <Route path='/' element={<User/>}></Route> */}
+        <Route path="/" element={<TongQuan />}></Route>
         <Route path='tong-quan' element={<TongQuan />}></Route>
         <Route path='gioi-thieu' element={<GioiThieu />} ></Route>
         <Route path='gioi-thieu/:id' element={<GioiThieuChiTiet />} ></Route>

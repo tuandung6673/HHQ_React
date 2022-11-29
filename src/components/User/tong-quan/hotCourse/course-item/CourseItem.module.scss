@@ -1,0 +1,28 @@
+.wrapper {
+  padding: 10px;
+  box-shadow: 0 2px 7px -2px rgb(70 131 243 / 70%);
+  transition: .4s ease-in-out;
+  border-radius: 10px;
+
+}
+
+.swipper {
+  border-radius: 10px;
+  img {
+    border-radius: 10px;
+  }
+}
+
+.description {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .des_right {
+    text-align: right;
+    .price {
+      text-decoration: line-through;
+    }
+    .priceDiscount {
+      font-weight: 600;
+    }
+  }
+}
