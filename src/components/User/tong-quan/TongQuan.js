@@ -4,18 +4,24 @@ import classes from './TongQuan.module.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Grade from './grade/Grade';
 import HotCourse from './hotCourse/HotCourse';
+import Teacher from './teacher/Teacher';
+import Quizz from './quizz/Quizz';
 
 function TongQuan () {
   const [slide, setSlide] = useState([]);
   const [classroom, setClassroom] = useState([]);
   const [hotCourse, setHotCourse] = useState([]);
+  const [teacher, setTeacher] = useState([]);
+  const [quizz, setQuizz] = useState([]);
   useEffect(() => {
     fetch('https://hhq.somee.com/api/Home')
     .then(res => res.json())
     .then((data) => {
       getSlide(data);
       setClassroom(data.data.classRooms);
-      setHotCourse(data.data.subjects)
+      setHotCourse(data.data.subjects);
+      setTeacher(data.data.teachers);
+      setQuizz(data.data.quizs)
     })
   }, [])
 
@@ -27,6 +33,10 @@ function TongQuan () {
         </div>
       )
     }))
+  }
+  
+  function directGioiThieu() {
+    window.location.href = "/gioi-thieu"; 
   }
 
   return (
@@ -49,6 +59,57 @@ function TongQuan () {
         <div className={classes.hotCourse}>
           <HotCourse data={hotCourse}/>
         </div>
+        <div className={classes.header_2}>
+          <p>Tham gia Học Hiệu Quả dễ dàng chỉ với 4 bước</p>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div className={classes.line}></div>
+          </div>
+          <img src='https://hochieuqua7.web.app/images/user/introduce/step2.png' alt="" />
+        </div>
+      </div>
+      <div className={classes.content_2}>
+        <div className={classes.header_3}>
+          <div className={classes.item_3}>
+            <p className={classes.num}>500.000+</p>
+            <p className={classes.des}>Học viên</p>
+          </div>
+          <div className={classes.item_3}>
+            <p className={classes.num}>5.000+</p>
+            <p className={classes.des}>Bài giảng</p>
+          </div>
+          <div className={classes.item_3}>
+            <p className={classes.num}>200.000+</p>
+            <p className={classes.des}>Bài ôn tập</p>
+          </div>
+          <div className={classes.item_3}>
+            <p className={classes.num}>4.000+</p>
+            <p className={classes.des}>Đề luyện thi</p>
+          </div>
+        </div>
+      </div>
+      <div className={classes.content_3}>
+        <div className={classes.teacher}>
+          <p>Đội ngũ Giáo viên</p>
+          <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div className={classes.line}></div>
+          </div>
+          <Teacher data={teacher}/>
+          <div className={classes.viewAll}>
+            <span>Xem tất cả</span> <i style={{marginTop: '4px', marginLeft: '2px'}} className='pi pi pi-fast-forward'></i>
+          </div>
+        </div>
+      </div>
+      <div className={classes.quizz}>
+        <p className={classes.quizz_header}>Đố vui</p>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div className={classes.line}></div>
+          </div>
+        <div className={classes.quizz_child}>
+          <Quizz data={quizz} />
+        </div>
+        <div className={classes.viewAll} onClick={() => directGioiThieu()}>
+            <span>Xem tất cả</span> <i style={{marginTop: '4px', marginLeft: '2px'}} className='pi pi pi-fast-forward'></i>
+          </div>
       </div>
     </div>
   )

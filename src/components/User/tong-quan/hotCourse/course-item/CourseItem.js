@@ -3,8 +3,9 @@ import classes from './CourseItem.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {A11y} from 'swiper'
 import 'swiper/scss';
+import { Rating } from 'primereact/rating';
+
 function CourseItem(props) {
-  console.log(props);
   return (
     <div>
       <Swiper
@@ -23,7 +24,9 @@ function CourseItem(props) {
                   {cr.studentNum === 0 ? ' --' : cr.studentNum}
                 </p>
                 <div className={classes.description}>
-                  <p className={classes.des_left}>Rating</p>
+                  <div className={classes.des_left}>
+                    <Rating value={cr.averageRating} readOnly stars={5} cancel={false}/>
+                  </div>
                   <div className={classes.des_right}>
                     <p className={classes.price}>{cr.price | Number}</p>
                     <p className={classes.priceDiscount}>{cr.priceDiscount}</p>
