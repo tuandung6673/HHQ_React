@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import classes from './UserNav.module.scss'
 function UserNav() {
   const [data, setData] = useState([]);
@@ -14,12 +15,12 @@ function UserNav() {
 
   const listMenu = data.map((menu, index) => {
     return (
-      <a key={index} href={menu.path} className={classes.link}>
+      <Link key={index} to={'/' + menu.path} className={classes.link}>
         <div className={classes.item}>
           <i className={menu.icon}></i>
           <p>{menu.name}</p>
         </div>
-      </a>
+      </Link>
     )
   })
   

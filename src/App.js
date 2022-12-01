@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import "primereact/resources/themes/vela-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import './App.css';
 import Header from './components/Header/Header';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {Switch} from "react-router"
 import User from './layouts/user/User';
 import Admin from './layouts/admin/Admin';
 import TongQuan from './components/User/tong-quan/TongQuan';
@@ -16,28 +18,21 @@ import Footer from "./components/User/Footer/Footer";
 import TuyenDungChiTiet from "./components/User/tuyen-dung/tuyen-dung-chi-tiet/TuyenDungChiTiet";
 import GiaoVien from "./components/User/giao-vien/GiaoVien";
 import ChiTietGiaoVien from "./components/User/giao-vien/chi-tiet-giao-vien/ChiTietGiaoVIen";
+import AdminNav from "./components/AdminNav/AdminNav";
+
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <User />
-      <Routes>
-        {/* <Route path='/' element={<User/>}></Route> */}
-        <Route path="/" element={<TongQuan />}></Route>
-        <Route path='/tong-quan' element={<TongQuan />}></Route>
-        <Route path='/gioi-thieu' element={<GioiThieu />} ></Route>
-        <Route path='/gioi-thieu/:id' element={<GioiThieuChiTiet />} ></Route>
-        <Route path='/gioi-thieu/danh-muc/:id' element={<GioiThieu />}></Route>
-        <Route path='/kiem-tra-nang-luc' element={<KiemTraNangLuc />} ></Route>
-        <Route path='/huong-dan' element={<HuongDan />} ></Route>
-        <Route path='/tuyen-dung' element={<TuyenDung />} ></Route>
-        <Route path='/tuyen-dung/:id' element={<TuyenDungChiTiet />}></Route>
-        <Route path='/giao-vien' element={<GiaoVien />}></Route>
-        <Route path='/giao-vien/:id' element={<ChiTietGiaoVien />} ></Route>
-        <Route path='/quan-tri' element={<Admin/>}></Route>
-      </Routes>
-      <Footer />
+      <Switch>
+        <Route path="/quan-tri" >
+          <Admin></Admin>
+        </Route>
+        <Route path="/">
+          <User></User>
+        </Route>
+      </Switch>
     </BrowserRouter>
   );
 }

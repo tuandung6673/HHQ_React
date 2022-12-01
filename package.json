@@ -15,7 +15,7 @@
     "react-dom": "^18.2.0",
     "react-number-format": "^5.1.2",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.4.3",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "5.0.1",
     "react-spinners": "^0.13.6",
     "sass": "^1.56.1",
