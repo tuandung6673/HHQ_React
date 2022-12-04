@@ -21,7 +21,7 @@ function Footer () {
   function loadFooter(data) {
     setFooter(data.data.data.map((ft, index) => {
       return (
-        <div dangerouslySetInnerHTML={{__html: ft.content}}></div>
+        <div key={index} dangerouslySetInnerHTML={{__html: ft.content}}></div>
       )
     }))
   }

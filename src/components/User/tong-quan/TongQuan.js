@@ -6,6 +6,7 @@ import Grade from './grade/Grade';
 import HotCourse from './hotCourse/HotCourse';
 import Teacher from './teacher/Teacher';
 import Quizz from './quizz/Quizz';
+import { Link } from 'react-router-dom';
 
 function TongQuan () {
   const [slide, setSlide] = useState([]);
@@ -95,7 +96,9 @@ function TongQuan () {
           </div>
           <Teacher data={teacher}/>
           <div className={classes.viewAll}>
-            <span>Xem tất cả</span> <i style={{marginTop: '4px', marginLeft: '2px'}} className='pi pi pi-fast-forward'></i>
+            <Link to={'/giao-vien'} style={{textDecoration: 'none', color: 'black'}}>
+              <span>Xem tất cả</span> <i style={{marginTop: '4px', marginLeft: '2px'}} className='pi pi pi-fast-forward'></i>
+            </Link>
           </div>
         </div>
       </div>
@@ -108,8 +111,10 @@ function TongQuan () {
           <Quizz data={quizz} />
         </div>
         <div className={classes.viewAll} onClick={() => directGioiThieu()}>
+          <Link to={'/gioi-thieu'} style={{textDecoration: 'none', color: 'black'}}>
             <span>Xem tất cả</span> <i style={{marginTop: '4px', marginLeft: '2px'}} className='pi pi pi-fast-forward'></i>
-          </div>
+          </Link>  
+        </div>
       </div>
     </div>
   )

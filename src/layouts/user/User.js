@@ -52,13 +52,13 @@ function User({children}) {
         <Route path='/tuyen-dung'  >
           <TuyenDung></TuyenDung>
         </Route>
-        <Route path='/tuyen-dung/:id' >
+        <Route exact path='/tuyen-dung/:id' >
           <TuyenDungChiTiet></TuyenDungChiTiet>
         </Route>
         <Route path='/giao-vien' >
           <GiaoVien></GiaoVien>
         </Route>
-        <Route path='/giao-vien/:id'  >
+        <Route exact path='/:id/giao-vien'  >
           <ChiTietGiaoVien></ChiTietGiaoVien>
         </Route>
       </Switch>
