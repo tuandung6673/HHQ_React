@@ -102,7 +102,7 @@ function CourseLeft(props) {
           </div>
         </div>
         <div className={classes.comment}>
-          <h4 style={{margin: '10px 0'}}>Nhận xét của học viên:</h4>
+          <h4 style={{margin: '10px 0', paddingLeft: '10px'}}>Nhận xét của học viên:</h4>
           <hr></hr>
         </div>
       </div>
