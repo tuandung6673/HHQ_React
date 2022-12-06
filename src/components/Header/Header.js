@@ -1,6 +1,25 @@
-import classes from './Header.module.scss'
+import classes from './Header.module.scss';
+import { Menubar } from 'primereact/menubar';
 
 function Header()  {
+
+  const items = [
+    {
+       items:[
+          {
+             label:'Trang quản trị',
+             icon:'pi pi-cog'
+          },
+          {
+             separator:true
+          },
+          {
+             label:'Đăng xuất',
+             icon:'pi pi-sign-out'
+          }
+       ]
+    },
+ ];
   return (
     <div className={classes.header}>
       <div className={classes.logo}>
@@ -11,7 +30,7 @@ function Header()  {
         <i className='pi pi-bell'></i>
         <img src='https://hhq.somee.com/images/638007379495173704_avatar4.png' alt='' />
         <p>trananhtho2</p>
-        <i className='pi pi-chevron-down'></i>
+        <Menubar model={items}/>
       </div>
     </div>
   )

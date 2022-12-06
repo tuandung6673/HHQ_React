@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { Rating } from 'primereact/rating';
 import { useParams } from "react-router-dom";

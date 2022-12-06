@@ -45,3 +45,69 @@
     text-align: center;
   }
 }
+
+.detail {
+  background: rgba(233,255,30,.192);
+  padding: 10px;
+  .text {
+    p {
+      margin: 5px 0;
+    }
+  }
+}
+
+.detail_header {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 10px 0;
+  align-items: center;
+  display: flex;
+}
+
+.courseTeacher {
+  margin: 5px 0;
+  padding: 10px;
+}
+
+.empty {
+  box-shadow: 2px 2px 3px #007bffb3;
+  border-radius: 10px;
+  align-items: center;
+  width: 5px;
+  height: 25px;
+  background-color: blue;
+  margin-right:5px;
+}
+
+.course {
+  margin: 5px 0;
+  border-radius: 4px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid hsla(0,0%,50%,.24);
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  grid-gap: 10px;
+  .course_left {
+    width: 100%;
+    img {
+      width: 100%;
+      border-radius: 2px;
+    }
+  }
+  .course_right {
+    text-align: right;
+    .price {
+      font-size: 17px;
+      text-decoration: line-through;
+    }
+    .priceDiscount {
+      font-weight: bold;
+      font-size: 25px;
+    }
+  }
+  &:hover {
+    background: hsla(0,0%,50%,.11);
+  }
+}

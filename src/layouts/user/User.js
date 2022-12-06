@@ -12,6 +12,7 @@ import TuyenDung from "../../components/User/tuyen-dung/TuyenDung";
 import TuyenDungChiTiet from "../../components/User/tuyen-dung/tuyen-dung-chi-tiet/TuyenDungChiTiet";
 import GiaoVien from "../../components/User/giao-vien/GiaoVien";
 import ChiTietGiaoVien from "../../components/User/giao-vien/chi-tiet-giao-vien/ChiTietGiaoVIen";
+import Monhoc from "../../components/User/mon-hoc/Monhoc";
 
 function User({children}) {
   useEffect(() => {
@@ -49,17 +50,20 @@ function User({children}) {
         <Route path='/huong-dan' >
           <HuongDan></HuongDan>
         </Route>
+        <Route exact path='/tuyen-dung/:id' >
+          <TuyenDungChiTiet></TuyenDungChiTiet>
+        </Route>
         <Route path='/tuyen-dung'  >
           <TuyenDung></TuyenDung>
         </Route>
-        <Route exact path='/tuyen-dung/:id' >
-          <TuyenDungChiTiet></TuyenDungChiTiet>
+        <Route exact path='/giao-vien/:id'  >
+          <ChiTietGiaoVien></ChiTietGiaoVien>
         </Route>
         <Route path='/giao-vien' >
           <GiaoVien></GiaoVien>
         </Route>
-        <Route exact path='/:id/giao-vien'  >
-          <ChiTietGiaoVien></ChiTietGiaoVien>
+        <Route path='/mon-hoc/:id'>
+          <Monhoc></Monhoc>
         </Route>
       </Switch>
     </DefaultLayout>

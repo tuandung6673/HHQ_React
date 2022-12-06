@@ -23,7 +23,7 @@ function GiaoVien() {
   }, [])
 
   function directDetailTeacher(id) {
-    window.location.href = "/"+ id + "/giao-vien/";
+    window.location.href ="/giao-vien/" + id;
   }
 
   function getTeacher(data) {

@@ -1,0 +1,33 @@
+.wrapper {
+  width: 100%;
+}
+
+.content {
+  width: 65%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-gap: 15px;
+  margin-top: 10px;
+}
+
+.banner {
+  color: #fff;
+  height: 160px;
+  width: 100%;
+  background:  #007bffd3;
+  .main_banner {
+    height: 100%;
+    width: 65%;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  .rate_student {
+    margin: 10px 0;
+    display: flex;
+    gap: 20px;
+    i {
+      margin-right: 5px;
+    }
+  }
+}

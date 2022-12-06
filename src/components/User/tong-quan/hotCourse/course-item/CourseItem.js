@@ -6,6 +6,10 @@ import 'swiper/scss';
 import { Rating } from 'primereact/rating';
 
 function CourseItem(props) {
+  function directCourse(id) {
+    window.location.href ="/mon-hoc/" + id;
+  }
+
   return (
     <div>
       <Swiper
@@ -15,7 +19,7 @@ function CourseItem(props) {
       >
         {props.data.map((cr, index) => {
           return (
-            <SwiperSlide key={index} className={classes.swipper}>
+            <SwiperSlide key={index} className={classes.swipper} onClick={() => directCourse(cr.id)}>
               <div className={classes.wrapper}>
                 <img src={cr.courseAvatar} alt="" width={'100%'} style={{objectFit: 'cover'}} height={'150px'}/>
                 <p>{cr.name}</p>

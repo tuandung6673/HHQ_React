@@ -2,7 +2,7 @@
 import "primereact/resources/themes/vela-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import './App.css';
+import './App.scss';
 import { BrowserRouter, Route } from "react-router-dom";
 import {Switch} from "react-router"
 import Header from './components/Header/Header';

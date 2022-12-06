@@ -1,0 +1,32 @@
+.p-input-icon-left > .p-inputtext {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ced4da;
+  border-radius: 3px;
+}
+
+.p-input-icon-left > i:first-of-type, .p-input-icon-left > svg:first-of-type, .p-input-icon-left > .p-input-prefix {
+  color: #000;
+}
+
+.p-accordion .p-accordion-tab .p-accordion-header .p-accordion-header-link {
+  background: #007bffd3;
+  color: #fff
+}
+
+.p-accordion .p-accordion-tab-active .p-accordion-header .p-accordion-header-link {
+  background: #007bffd3;
+  color: #fff
+}
+
+.p-accordion .p-accordion-tab .p-accordion-header .p-accordion-header-link:hover {
+  background: #007bffd3;
+  color: #fff
+}
+
+.p-progressbar {
+  position: relative;
+  background: #dee2e6;
+  overflow: hidden;
+  margin: 3px 0;
+}
