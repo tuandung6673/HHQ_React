@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from "react"
-import UserNav from "../../components/User/UserNav/UserNav"
 import DefaultLayout from "../defaultLayout/DefaultLayout";
-import {Routes, Route, Switch} from 'react-router-dom'
+import {Route, Switch} from 'react-router-dom'
 import TongQuan from "../../components/User/tong-quan/TongQuan";
 import GioiThieu from "../../components/User/gioi-thieu/GioiThieu";
 import GioiThieuChiTiet from "../../components/User/gioi-thieu/gioi-thieu-chi-tiet/GioiThieuChiTiet";

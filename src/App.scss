@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .p-input-icon-left > .p-inputtext {
   background: #fff;
   color: #000;
@@ -29,4 +34,32 @@
   background: #dee2e6;
   overflow: hidden;
   margin: 3px 0;
+}
+
+.AdminNav_wrapper__80guD .AdminNav_content__MpSOs {
+  width: 100%;
+}
+
+.p-menubar {
+  justify-content: space-around;
+  background: #007aff;
+  height: 100%;
+  border: none;
+  width: 100%;
+  ul {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+
+
+.p-menubar-root-list li {
+  margin: 0 4px;
+  border-radius: 5px;
+  &:hover {
+    background: #64afff59;
+    border-radius: 5px;
+  }
 }

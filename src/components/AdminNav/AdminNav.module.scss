@@ -1,23 +1,13 @@
 .wrapper {
-  color: white;
-  background-color: #007aff;
   width: 100%;
   height: 50px;
-  justify-content: center;
-  display: flex;
-  .item {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    margin: 3px 0 3px 0;
-    padding: 3px 10px 3px 10px;
-    &:hover {
-      border-radius: 5px;
-      cursor: pointer;
-      background: #2c91f5bf;
-    }
-    i {
-      margin: 3px;
-    }
+  background: #007aff;
+  .content {
+    margin: 0 auto;
+    width: 65%;
+    height: 50px;
+    background: #007aff;
+    border: none;
   }
+  
 }

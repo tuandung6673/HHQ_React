@@ -1,37 +1,59 @@
-import React from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import classes from './AdminNav.module.scss'
+import { Menubar } from 'primereact/menubar';
+const queryString = require('query-string')
 
-const AdminNav = () => (
-  <div className={classes.wrapper}>
-      <div className={classes.item}>
-        <i className="pi pi-home"></i>
-        <p>Tổng quan</p>
-      </div>
-      <div className={classes.item}>
-        <i className="pi pi-window-minimize"></i>
-        <p>Giới thiệu</p>
-      </div>
-      <div className={classes.item}>
-        <i className="pi pi-images"></i>
-        <p>Khóa học của tôi</p>
-      </div>
-      <div className={classes.item}>
-        <i className="pi pi-copy"></i>
-        <p>Kiểm tra năng lực</p>
-      </div>
-      <div className={classes.item}>
-        <i className="pi pi-cloud"></i>
-        <p>Tuyển dụng</p>
-      </div>
-      <div className={classes.item}>
-        <i className="pi pi-map"></i>
-        <p>Hướng dẫn</p>
-      </div>
-  </div>
-);
+function AdminNav() {
+  const history = useHistory();
+  const [menus, setMenus] = useState([]);
+  const query = {
+    filter: '',
+    offSet: 0,
+    pageSize: 100,
+    screen: 'admin',
+    status: '1'
+  }
+  const queryParams = queryString.stringify(query)
+  useEffect(() => {
+    fetch('https://hhq.somee.com/api/Menu/GetMenusTree?' + queryParams)
+    .then(res => res.json())
+    .then((data) => {
+      setMenus(buildTree(data.data.data))
+    })
+  }, [])
 
-AdminNav.propTypes = {};
+  function buildTree (arr) {
+    return arr.map(t => {
+        if (t.childs && t.childs.length) {
+            t.childs = buildTree(t.childs);
+        }
+        const result =  {
+            label: t.name,
+            items: t.childs,
+            icon: t.icon,
+            command: () => {
+                if (t.path !== 'none') {
+                    history.push('/' + t.path);
+                }
+            }
+        };
+        if (result.items && result.items.length === 0) {
+            delete result.items;
+        }
+        return result;
+    })
+  }
 
-AdminNav.defaultProps = {};
+  return (
+    <div className={classes.wrapper}>
+      <div className={classes.content}>
+        <Menubar  model={menus}></Menubar>
+      </div>
+    </div>
+  )
+}
 
 export default AdminNav;

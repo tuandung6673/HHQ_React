@@ -1,0 +1,14 @@
+.table {
+  text-align: left;
+  width: 100%;
+  border-spacing:0;
+}
+
+.header {
+  padding: 10px 15px;
+  display: flex;
+  justify-content: space-between;
+  .header_right_action > * {
+    margin: 0 2.5px;
+  }
+}
