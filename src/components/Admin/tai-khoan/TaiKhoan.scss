@@ -12,3 +12,27 @@
     margin: 0 2.5px;
   }
 }
+
+.table_menu {
+  height: 45px;
+  background: #d1d4dc;
+  color: #525b73;
+}
+
+.even {
+  background: #f6f7f8;
+}
+
+.opstionBtn {
+  padding: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #d1d4dc;
+    border-radius: 50%;
+  }
+}
+
+.item_btn {
+  text-align: end;
+}

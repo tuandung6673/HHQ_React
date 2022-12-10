@@ -8,9 +8,22 @@ import { Button } from 'primereact/button';
  
 const queryString = require('query-string')
 class TaiKhoan extends Component {
+  constructor() {
+    super();
+    this.defaultAvatar = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Faenza-avatar-default-symbolic.svg/1024px-Faenza-avatar-default-symbolic.svg.png'
+  }
   state = {
     accounts: [],
   }
+
+  optionsBtn() {
+    return (
+      <span className='opstionBtn'>
+        <i className='pi pi-ellipsis-v'></i>
+      </span>
+    )
+  }
+
 
   componentDidMount() {
     const query = {
@@ -19,11 +32,6 @@ class TaiKhoan extends Component {
       offSet: 0,
       pageSize: 10
     }
-    // axios.get('https://hhq.somee.com/api/Account?' + queryString.stringify(query))
-    // .then(res => {
-    //   const persons = res.data.data.data;
-    //   this.setState({accounts: persons})
-    // })
     axios({
       method: 'get',
       url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(query),
@@ -64,6 +72,7 @@ class TaiKhoan extends Component {
         </div>
         <table className='table'>
           <tr className='table_menu'>
+            <th>Hình ảnh</th>
             <th>Tài khoản</th>
             <th>Email</th>
             <th>Điện thoại</th>
@@ -74,14 +83,20 @@ class TaiKhoan extends Component {
           </tr>
           {this.state.accounts.map((ac, index) => {
             return (
-              <tr>
-                <td>{ac.userName}</td>
-                <td>{ac.email}</td>
-                <td>{ac.phone}</td>
-                <td>{ac.name}</td>
-                <td>{ac.roleName}</td>
-                <td>{ac.status}</td>
-                <td>{ac.status}</td>
+              <tr className={`table_item ${index%2 === 0 ? 'odd' : 'even'}`} key={index}>
+                <td className='item_td'>
+                  <img src={ac.avatar ? ac.avatar : this.defaultAvatar} alt="" height='90px' width='90px'/>
+                </td>
+                <td className='item_td'>{ac.userName}</td>
+                <td className='item_td'>{ac.email}</td>
+                <td className='item_td'>{ac.phone}</td>
+                <td className='item_td'>{ac.name}</td>
+                <td className='item_td'>{ac.roleName}</td>
+                <td className='item_td'>
+                  {ac.status === 0 || <span className="pi pi-check"></span> }
+                  {ac.status === 1 || <span className="pi pi-times"></span> }
+                </td>
+                <td className='item_btn'>{this.optionsBtn()}</td>
               </tr>
             )
           })}
