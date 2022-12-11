@@ -4,6 +4,7 @@ import {Component} from 'react'
 import './TaiKhoan.scss'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
+import { withRouter } from "react-router-dom";
  
  
 const queryString = require('query-string')
@@ -14,6 +15,8 @@ class TaiKhoan extends Component {
   }
   state = {
     accounts: [],
+    displayOption: false,
+    chooseItem: ''
   }
 
   optionsBtn() {
@@ -24,6 +27,15 @@ class TaiKhoan extends Component {
     )
   }
 
+  showOptions(itemId) {
+    this.setState({displayOption: !this.state.displayOption});
+    // console.log(this.state.displayOption);
+    this.setState({chooseItem: itemId})
+  }
+
+  directDetailAccount(id) {
+    this.props.history.push('/quan-tri/tai-khoan/' + id)
+  }
 
   componentDidMount() {
     const query = {
@@ -83,21 +95,33 @@ class TaiKhoan extends Component {
           </tr>
           {this.state.accounts.map((ac, index) => {
             return (
-              <tr className={`table_item ${index%2 === 0 ? 'odd' : 'even'}`} key={index}>
-                <td className='item_td'>
-                  <img src={ac.avatar ? ac.avatar : this.defaultAvatar} alt="" height='90px' width='90px'/>
-                </td>
-                <td className='item_td'>{ac.userName}</td>
-                <td className='item_td'>{ac.email}</td>
-                <td className='item_td'>{ac.phone}</td>
-                <td className='item_td'>{ac.name}</td>
-                <td className='item_td'>{ac.roleName}</td>
-                <td className='item_td'>
-                  {ac.status === 0 || <span className="pi pi-check"></span> }
-                  {ac.status === 1 || <span className="pi pi-times"></span> }
-                </td>
-                <td className='item_btn'>{this.optionsBtn()}</td>
-              </tr>
+              <>
+                <tr className={`table_item ${index%2 === 0 ? 'odd' : 'even'}`} key={index}>
+                  <td className='item_td'>
+                    <div className='image_wrapper'>
+                      <img src={ac.avatar ? ac.avatar : this.defaultAvatar} alt="" height='75px' width='75px' style={{marginTop: '12.5px'}}/>
+                    </div>
+                  </td>
+                  <td className='item_td'>{ac.userName}</td>
+                  <td className='item_td'>{ac.email}</td>
+                  <td className='item_td'>{ac.phone}</td>
+                  <td className='item_td'>{ac.name}</td>
+                  <td className='item_td'>{ac.roleName}</td>
+                  <td className='item_td'>
+                    {ac.status === 0 || <span className="pi pi-check"></span> }
+                    {ac.status === 1 || <span className="pi pi-times"></span> }
+                  </td>
+                  <td className='item_btn' onClick={() => this.showOptions(ac.id)}>
+                    <span>{this.optionsBtn()}</span>
+                  </td>
+                </tr>
+                {this.state.displayOption && ac.id === this.state.chooseItem && 
+                  <div className='dropdown_table'>
+                    <p className='dropdown_item' onClick={() => {this.directDetailAccount(ac.id)}}><i style={{paddingRight: '5px'}} className='pi pi-pencil'></i>Sửa</p>
+                    <p className='dropdown_item'><i style={{paddingRight: '5px'}} className='pi pi-trash'></i>Xóa</p>
+                  </div>
+                }
+              </>
             )
           })}
         </table>
@@ -106,4 +130,4 @@ class TaiKhoan extends Component {
   }
 }
 
-export default TaiKhoan
+export default withRouter(TaiKhoan)

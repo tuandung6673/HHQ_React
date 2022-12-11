@@ -37,13 +37,13 @@
 }
 
 .display {
+  position: absolute;
+  top: 55px;
+  right: 10%;
   z-index: 1000;
   display: block;
   width: 200px;
   border: none;
-  position: absolute;
-  top: 55px;
-  right: 10%;
   background: #fff;
   border-radius: 5px;
 }
@@ -63,5 +63,11 @@
     &:hover {
       background: #e9ecef;
     }
+  }
+}
+
+.btn {
+  &:hover {
+    cursor: pointer;
   }
 }

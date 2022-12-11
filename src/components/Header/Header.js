@@ -24,7 +24,7 @@ function Header()  {
         <i className='pi pi-bell'></i>
         <img src='https://hhq.somee.com/images/638007379495173704_avatar4.png' alt='' />
         <p>trananhtho2</p>
-        <div className='pi pi-chevron-down' onClick={() => toggleMenu()}></div>
+        <div className='pi pi-chevron-down btn' onClick={() => toggleMenu()}></div>
         <div className={toggle ? classes.display : classes.unDisplay}>
           <div className={classes.menu}>
             <div className={classes.item} onClick={() => directAdmin()}><i className='pi pi-cog'></i>Trang quản trị</div>

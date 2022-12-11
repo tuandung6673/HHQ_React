@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom"
 import GiupDo from "../../components/Admin/giup-do/GiupDo"
+import ChiTietTaiKhoan from "../../components/Admin/tai-khoan/chi-tiet-tai-khoan/ChiTietTaiKhoan"
 import TaiKhoan from "../../components/Admin/tai-khoan/TaiKhoan"
 import ThanhToan from "../../components/Admin/thanh-toan/ThanhToan"
 import AdminNav from "../../components/AdminNav/AdminNav"
@@ -11,6 +12,9 @@ function Admin() {
       <AdminNav />
       <div className={classes.content}>
         <Switch>
+          <Route exact path='/quan-tri/tai-khoan/:id'>
+            <ChiTietTaiKhoan></ChiTietTaiKhoan>
+          </Route>
           <Route path='/quan-tri/tai-khoan'>
             <TaiKhoan></TaiKhoan>
           </Route>
