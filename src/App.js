@@ -9,7 +9,7 @@ import Header from './components/Header/Header';
 import User from './layouts/user/User';
 import Admin from './layouts/admin/Admin';
 
-function App() {
+function App() {  
   return (
     <BrowserRouter>
       <Header></Header>

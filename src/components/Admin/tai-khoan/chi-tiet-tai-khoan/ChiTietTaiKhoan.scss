@@ -1,0 +1,116 @@
+.ChiTietTaiKhoan {
+  .breadcrumb > * {
+    margin: 5px 3px;
+    font-style: normal;
+    color: rgba(43,47,51,.4);
+    &:last-child {
+      color: #0059ce;
+      font-weight: 600;
+    }
+  }
+
+  .wrapper_account {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 10px;
+    margin-top: 15px;
+    .wrapper {
+      width: 100%;
+      .input_right {
+        width: 100%;
+      }
+      .input_left {
+        width: 100%;
+      }
+    }
+    
+    .input_right {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 12px;
+      row-gap: 10px;
+      .input {
+        width: 100%;
+        .input_title {
+          margin-left: 5px;
+          margin-bottom: 5px;
+          color: #35393d;
+        }
+        .p-input-icon-right {
+          width: 100%;
+        }
+        .p-input-icon-right > .p-inputtext {
+          width: 100%;
+        }
+        .p-inputtext {
+          border: 1px solid #ced4da;
+          color: #495057;
+          background: #fff;
+        }
+        .p-input-icon-right > i:last-of-type, .p-input-icon-right > svg:last-of-type, .p-input-icon-right > .p-input-suffix {
+          color: #6c757d;
+          right: 0.5rem;
+        }
+        .p-calendar {
+          width: 100%;
+        }
+        .p-dropdown {
+          width: 100%;
+          border: 1px solid #ced4da;
+        }
+        .p-dropdown-trigger {
+          background: #fff;
+          color: #6c757d
+        }
+      } 
+    }
+
+    .input_left {
+      height: 100%;
+      box-shadow: 0 0 3px #aaa9a9;
+      border-radius: 4px;
+      .left_child {
+        padding: 7px;
+        width: 100%;
+        height: 100%;
+        .avatar {
+          object-fit: cover;
+          width: 100%; 
+          height: 88%;
+        }
+        .changeAvatar {
+          width: 100%;
+          background: #fff;
+          border: .5px solid rgba(30,143,255,.637);
+          color: #1e90ff;
+          cursor: pointer;
+          font-weight: 600;
+          text-align: center;
+          border-radius: 5px;
+          p {
+            padding: 10px 0;
+          }
+        }
+      }
+    }
+    
+    .action {
+      border-radius: 8px;
+      box-shadow: inset 0 -4.5px 0 0 rgb(0 0 0 / 25%);
+      color: #fff;
+      cursor: pointer;
+      margin-top: 15px;
+      width: 100%;
+      background-color: #0080ff;
+      text-align: center;
+      font-weight: 600;
+      transition: .1s ease-in-out;
+      p {
+        padding: 8px 0;
+      }
+      &:hover {
+        background-color: #0b6cce;
+      }
+    }
+  }
+}

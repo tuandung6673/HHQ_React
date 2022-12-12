@@ -19,6 +19,24 @@ class TaiKhoan extends Component {
     chooseItem: ''
   }
 
+  componentDidMount() {
+    const query = {
+      RoleId: '',
+      filter: '',
+      offSet: 0,
+      pageSize: 100
+    }
+    axios({
+      method: 'get',
+      url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(query),
+      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
+    })
+    .then(res => {
+      const persons = res.data.data.data;
+      this.setState({accounts: persons})
+    })
+  }
+
   optionsBtn() {
     return (
       <span className='opstionBtn'>
@@ -37,23 +55,6 @@ class TaiKhoan extends Component {
     this.props.history.push('/quan-tri/tai-khoan/' + id)
   }
 
-  componentDidMount() {
-    const query = {
-      RoleId: '',
-      filter: '',
-      offSet: 0,
-      pageSize: 10
-    }
-    axios({
-      method: 'get',
-      url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(query),
-      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
-    })
-    .then(res => {
-      const persons = res.data.data.data;
-      this.setState({accounts: persons})
-    })
-  }
 
   render() {
     return (
@@ -83,20 +84,22 @@ class TaiKhoan extends Component {
           </div>
         </div>
         <table className='table'>
-          <tr className='table_menu'>
-            <th>Hình ảnh</th>
-            <th>Tài khoản</th>
-            <th>Email</th>
-            <th>Điện thoại</th>
-            <th>Họ tên</th>
-            <th>Quyền</th>
-            <th>Trạng thái</th>
-            <th>Hành động</th>
-          </tr>
+          <tbody>
+            <tr className='table_menu'>
+              <th>Hình ảnh</th>
+              <th>Tài khoản</th>
+              <th>Email</th>
+              <th>Điện thoại</th>
+              <th>Họ tên</th>
+              <th>Quyền</th>
+              <th>Trạng thái</th>
+              <th>Hành động</th>
+            </tr>
+          </tbody>
           {this.state.accounts.map((ac, index) => {
             return (
-              <>
-                <tr className={`table_item ${index%2 === 0 ? 'odd' : 'even'}`} key={index}>
+              <tbody key={index}>
+                <tr className={`table_item ${index%2 === 0 ? 'odd' : 'even'}`}>
                   <td className='item_td'>
                     <div className='image_wrapper'>
                       <img src={ac.avatar ? ac.avatar : this.defaultAvatar} alt="" height='75px' width='75px' style={{marginTop: '12.5px'}}/>
@@ -121,7 +124,7 @@ class TaiKhoan extends Component {
                     <p className='dropdown_item'><i style={{paddingRight: '5px'}} className='pi pi-trash'></i>Xóa</p>
                   </div>
                 }
-              </>
+              </tbody>
             )
           })}
         </table>
