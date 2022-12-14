@@ -91,7 +91,7 @@ class TaiKhoan extends Component {
               <th>Email</th>
               <th>Điện thoại</th>
               <th>Họ tên</th>
-              <th>Quyền</th>
+              <th>Quyền</th>24gq50
               <th>Trạng thái</th>
               <th>Hành động</th>
             </tr>

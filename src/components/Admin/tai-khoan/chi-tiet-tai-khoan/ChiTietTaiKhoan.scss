@@ -1,4 +1,13 @@
 .ChiTietTaiKhoan {
+  .error {
+    margin-left: 5px;
+    font-size: 12px;
+    height: 16px;
+    color: red;
+  }
+  .nonError {
+    height: 16px;
+  }
   .breadcrumb > * {
     margin: 5px 3px;
     font-style: normal;
