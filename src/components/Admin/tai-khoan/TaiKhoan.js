@@ -5,6 +5,8 @@ import './TaiKhoan.scss'
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { withRouter } from "react-router-dom";
+import { Toast } from 'primereact/toast';
+import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
  
  
 const queryString = require('query-string')
@@ -12,6 +14,9 @@ class TaiKhoan extends Component {
   constructor() {
     super();
     this.defaultAvatar = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Faenza-avatar-default-symbolic.svg/1024px-Faenza-avatar-default-symbolic.svg.png'
+    this.showSuccess = this.showSuccess.bind(this);
+    this.showFail = this.showFail.bind(this);
+    this.confirm1 = this.confirm1.bind(this);
   }
   state = {
     accounts: [],
@@ -55,20 +60,62 @@ class TaiKhoan extends Component {
     this.props.history.push('/quan-tri/tai-khoan/' + id)
   }
 
+  showSuccess(detail) {
+    this.toast.show({severity:'success', summary: 'Thông báo', detail: detail});
+  }
+
+  showFail(detail) {
+    this.toast.show({severity:'error', summary: 'Thông báo', detail: detail});
+  }
+
+  deleteAccount(id) {
+    axios({
+      method: 'delete',
+      url: 'https://hhq.somee.com/api/Account/' + id,
+      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
+    })
+    .then(response => {
+      if(response.data.status === 'success') {
+        this.showSuccess(response.data.data.messages)
+        this.componentDidMount()
+      } else {
+        this.showFail(response.data.data.messages)
+      }
+    })
+  }
+
+  // accept() {
+  //   this.toast.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
+  //   this.de
+  // }
+
+  // reject() {
+  //     this.toast.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
+  // }
+
+  confirm1(id) {
+    confirmDialog({
+        message: 'Are you sure you want to proceed?',
+        header: 'Confirmation',
+        icon: 'pi pi-exclamation-triangle',
+        accept: this.deleteAccount(id),
+        // reject: this.reject
+    });
+  }
+
 
   render() {
     return (
       <div className='wrapper'>
         <div className='header'>
-          <div className='header_left'>
-            <i className='pi pi-home'></i>
+          <ConfirmDialog />
+          <Toast ref={(el) => this.toast = el} />
+          <div className="breadcrumb">
+            <i className="pi pi-home"></i>
             <i>{'>'}</i>
-            Trang chủ
+            <i>Quản trị</i>
             <i>{'>'}</i>
-            Quản trị
-            <div>
-              Tài khoản
-            </div>
+            <i>Tài khoản</i>
           </div>
           <div className='header_right'>
               <p>Tìm kiếm:</p>
@@ -91,7 +138,7 @@ class TaiKhoan extends Component {
               <th>Email</th>
               <th>Điện thoại</th>
               <th>Họ tên</th>
-              <th>Quyền</th>24gq50
+              <th>Quyền</th>
               <th>Trạng thái</th>
               <th>Hành động</th>
             </tr>
@@ -121,7 +168,7 @@ class TaiKhoan extends Component {
                 {this.state.displayOption && ac.id === this.state.chooseItem && 
                   <div className='dropdown_table'>
                     <p className='dropdown_item' onClick={() => {this.directDetailAccount(ac.id)}}><i style={{paddingRight: '5px'}} className='pi pi-pencil'></i>Sửa</p>
-                    <p className='dropdown_item'><i style={{paddingRight: '5px'}} className='pi pi-trash'></i>Xóa</p>
+                    <p className='dropdown_item' onClick={() => this.confirm1(ac.id)}><i style={{paddingRight: '5px'}} className='pi pi-trash'></i>Xóa</p>
                   </div>
                 }
               </tbody>

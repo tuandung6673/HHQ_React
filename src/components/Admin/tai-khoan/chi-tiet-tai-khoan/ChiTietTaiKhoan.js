@@ -13,8 +13,9 @@ export class ChiTietTaiKhoan extends Component {
   constructor(props) {
     super(props);
     this.accountID = this.props.match.params.id;
-
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.showSuccess = this.showSuccess.bind(this);
+    this.showFail = this.showFail.bind(this);
   }
   
   state = {
@@ -43,6 +44,14 @@ export class ChiTietTaiKhoan extends Component {
       courseId: null,
       roleList: [],
       errors : {}
+  }
+
+  showSuccess(detail) {
+    this.toast.show({severity:'success', summary: 'Thông báo', detail: detail});
+  }
+
+  showFail(detail) {
+    this.toast.show({severity:'error', summary: 'Thông báo', detail: detail});
   }
 
   handleInputChange(event) {
@@ -95,7 +104,11 @@ export class ChiTietTaiKhoan extends Component {
       headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
     })
     .then(response => {
-
+      if(response.data.status === 'success') {
+        this.showSuccess(response.data.data.messages);
+      } else {
+        this.showFail(response.data.data.messages);
+      }
     })
   }
 
@@ -115,13 +128,6 @@ export class ChiTietTaiKhoan extends Component {
       formIsValid = false;
       errors["name"] = "Vui lòng nhập Tên";
     }
-
-    // if(this.state.name){
-    //   if(!this.state.name.match(/^[a-zA-Z]+$/)){
-    //     formIsValid = false;
-    //     errors["name"] = "Vui lòng chỉ nhập kí tự A-Z";
-    //   }      	
-    // }
 
     //Email
     if(!this.state.email){
@@ -145,12 +151,6 @@ export class ChiTietTaiKhoan extends Component {
       errors["phone"] = "Nhập số điện thoại"
     }
     
-    // if(this.state.phone) {
-    //   if(!this.state.name.match('^[0-9]+$')) {
-    //     formIsValid = false;
-    //     errors["phone"] = "Chỉ nhập số từ 0-9"
-    //   }
-    // }
 
     this.setState({errors: errors});
     return formIsValid;
@@ -169,6 +169,7 @@ export class ChiTietTaiKhoan extends Component {
   render() {
     return (
       <div className='ChiTietTaiKhoan'>
+        <Toast ref={(el) => this.toast = el} />
         <div className="breadcrumb">
           <i className="pi pi-home"></i>
           <i>{'>'}</i>
