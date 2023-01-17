@@ -7,7 +7,7 @@ import { Button } from 'primereact/button';
 import { withRouter } from "react-router-dom";
 import { Toast } from 'primereact/toast';
 import { ConfirmDialog, confirmDialog } from 'primereact/confirmdialog';
- 
+import { OverlayPanel } from 'primereact/overlaypanel';
  
 const queryString = require('query-string')
 class TaiKhoan extends Component {
@@ -17,23 +17,30 @@ class TaiKhoan extends Component {
     this.showSuccess = this.showSuccess.bind(this);
     this.showFail = this.showFail.bind(this);
     this.confirm1 = this.confirm1.bind(this);
+    this.state = {
+      accounts: [],
+      displayOption: false,
+      chooseItem: '',
+      filter: '',
+    }
   }
-  state = {
-    accounts: [],
-    displayOption: false,
-    chooseItem: ''
+  
+  query = {
+    RoleId: '',
+    filter: '',
+    offSet: 0,
+    pageSize: 100
+  }
+  
+  componentDidMount() {
+    this.getAccountList();
   }
 
-  componentDidMount() {
-    const query = {
-      RoleId: '',
-      filter: '',
-      offSet: 0,
-      pageSize: 100
-    }
+  getAccountList() {
+    this.query.filter = this.state.filter;
     axios({
       method: 'get',
-      url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(query),
+      url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(this.query),
       headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
     })
     .then(res => {
@@ -61,11 +68,11 @@ class TaiKhoan extends Component {
   }
 
   showSuccess(detail) {
-    this.toast.show({severity:'success', summary: 'Thông báo', detail: detail});
+    this.toast.show({severity:'success', summary: 'Thông báo', detail: detail ? detail : 'Thành công'});
   }
 
   showFail(detail) {
-    this.toast.show({severity:'error', summary: 'Thông báo', detail: detail});
+    this.toast.show({severity:'error', summary: 'Thông báo', detail: detail ? detail: 'Thất bại'});
   }
 
   deleteAccount(id) {
@@ -77,32 +84,28 @@ class TaiKhoan extends Component {
     .then(response => {
       if(response.data.status === 'success') {
         this.showSuccess(response.data.data.messages)
-        this.componentDidMount()
+        this.componentDidMount();
       } else {
         this.showFail(response.data.data.messages)
       }
     })
   }
 
-  // accept() {
-  //   this.toast.show({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted', life: 3000 });
-  //   this.de
-  // }
-
-  // reject() {
-  //     this.toast.show({ severity: 'warn', summary: 'Rejected', detail: 'You have rejected', life: 3000 });
-  // }
-
   confirm1(id) {
     confirmDialog({
-        message: 'Are you sure you want to proceed?',
+        message: 'Bạn có chắc chắn xóa tài khoản này ?',
         header: 'Confirmation',
         icon: 'pi pi-exclamation-triangle',
-        accept: this.deleteAccount(id),
-        // reject: this.reject
+        acceptLabel: 'Xác nhận',
+        rejectLabel: "Hủy",
+        accept: () => this.deleteAccount(id),
+        reject: () => this.showFail()
     });
   }
 
+  newAccount() {
+    this.props.history.push('/quan-tri/tai-khoan/them-moi')
+  }
 
   render() {
     return (
@@ -121,11 +124,11 @@ class TaiKhoan extends Component {
               <p>Tìm kiếm:</p>
               <div className='header_right_action'>
                 <span className="p-input-icon-left">
-                  <i className="pi pi-search" />
-                  <InputText  placeholder="Tìm kiếm" />
+                  <i onClick={() => this.getAccountList()} className="pi pi-search" />
+                  <InputText value={this.state.filter} name="filter" onChange={(e) => this.setState({filter: e.target.value})} placeholder="Tìm kiếm" />
                 </span>
                 <Button label="Bộ lọc" icon="pi pi-sliders-h" />
-                <Button label="Thêm mới" icon="pi pi-times"/>
+                <Button onClick={() => this.newAccount()} label="Thêm mới" icon="pi pi-times"/>
                 <Button icon="pi pi-file-excel"/>
               </div>
           </div>

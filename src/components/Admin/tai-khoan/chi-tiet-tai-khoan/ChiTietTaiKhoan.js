@@ -80,6 +80,7 @@ export class ChiTietTaiKhoan extends Component {
       const persons = res.data.data;
       this.setState(persons)
     })
+    
     axios({
       method: 'get',
       url: 'https://hhq.somee.com/api/Role?filter=&offSet=0&pageSize=1000',

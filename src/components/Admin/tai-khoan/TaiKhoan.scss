@@ -11,6 +11,16 @@
   .header_right_action > * {
     margin: 0 2.5px;
   }
+  .header_right_action {
+    .p-input-icon-left {
+      i{
+        &:hover {
+          color: blue;
+          cursor: pointer;
+        }
+      }
+    }
+  }
 }
 
 .breadcrumb > * {
@@ -68,7 +78,7 @@
 
   z-index: 1001;
   position: absolute;
-  margin-top: -20px;
+  margin-top: -25px;
   right: 21%;
   width: 150px;
   background: #fff;
@@ -78,6 +88,7 @@
     padding: 10px 15px;
     &:hover {
       background: #f6f7f8;
+      cursor: pointer;
     }
     &:first-child {
       border-top-left-radius: 4px;

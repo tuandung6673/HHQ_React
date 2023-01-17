@@ -15,6 +15,9 @@ function Admin() {
           <Route exact path='/quan-tri/tai-khoan/:id'>
             <ChiTietTaiKhoan></ChiTietTaiKhoan>
           </Route>
+          <Route path='/quan-tri/tai-khoan/them-moi'>
+            <ChiTietTaiKhoan></ChiTietTaiKhoan>
+          </Route>
           <Route path='/quan-tri/tai-khoan'>
             <TaiKhoan></TaiKhoan>
           </Route>
