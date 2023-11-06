@@ -73,8 +73,8 @@ export class ChiTietTaiKhoan extends Component {
   componentDidMount() {
     axios({
       method: 'get',
-      url: 'https://hhq.somee.com/api/Account/' + this.accountID,
-      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
+      url: 'https://tank8.bsite.net/api/Account/' + this.accountID,
+      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData'))?.token}
     })
     .then(res => {
       const persons = res.data.data;
@@ -83,8 +83,8 @@ export class ChiTietTaiKhoan extends Component {
     
     axios({
       method: 'get',
-      url: 'https://hhq.somee.com/api/Role?filter=&offSet=0&pageSize=1000',
-      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
+      url: 'https://tank8.bsite.net/api/Role?filter=&offSet=0&pageSize=1000',
+      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData'))?.token}
     })
     .then(res => {
       const role = res.data.data.data.map((rl) => {
@@ -100,7 +100,7 @@ export class ChiTietTaiKhoan extends Component {
   postAccount() {
     axios({
       method: 'post',
-      url: 'https://hhq.somee.com/api/account/SetAccountUser',
+      url: 'https://tank8.bsite.net/api/account/SetAccountUser',
       data: this.state,
       headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
     })

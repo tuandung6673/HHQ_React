@@ -11,7 +11,7 @@ function Footer () {
   }
   const queryParams = queryString.stringify(params)
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/footer?${queryParams}`)
+    fetch(`https://tank8.bsite.net/api/footer?${queryParams}`)
     .then(res => res.json())
     .then(result => {
       loadFooter(result)

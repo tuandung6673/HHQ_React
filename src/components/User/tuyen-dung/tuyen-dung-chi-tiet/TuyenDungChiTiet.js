@@ -7,7 +7,7 @@ import { InputText } from 'primereact/inputtext';
 
 import classes from './TuyenDungChiTiet.module.scss'
 
-const token = JSON.parse(localStorage.getItem('userData')).token;
+const token = JSON.parse(localStorage.getItem('userData'))?.token;
 
 function TuyenDungChiTiet() {
   const [dialog, setDialog] = useState(false);
@@ -26,7 +26,7 @@ function TuyenDungChiTiet() {
     recruitId: id
   }
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/recruit/` + id)
+    fetch(`https://tank8.bsite.net/api/recruit/` + id)
     .then(res => res.json())
     .then((data) => {
       setDetail(data.data)
@@ -43,7 +43,7 @@ function TuyenDungChiTiet() {
   
   function applyJob() {
     console.log('recruit', recruit);
-    fetch('https://hhq.somee.com/api/RecruitCandidate', {
+    fetch('https://tank8.bsite.net/api/RecruitCandidate', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',

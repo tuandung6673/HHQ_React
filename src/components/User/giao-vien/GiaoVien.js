@@ -15,7 +15,7 @@ function GiaoVien() {
   }
   const queryParams = queryString.stringify(query)
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Teacher?' + queryParams)
+    fetch('https://tank8.bsite.net/api/Teacher?' + queryParams)
     .then(res => res.json())
     .then((data) => {
       getTeacher(data)

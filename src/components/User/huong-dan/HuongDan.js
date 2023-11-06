@@ -15,7 +15,7 @@ function HuongDan() {
   }
   const queryParams = queryString.stringify(query);
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/Guide?${queryParams}`)
+    fetch(`https://tank8.bsite.net/api/Guide?${queryParams}`)
     .then(res => res.json())
     .then((data) => {
       getList(data);

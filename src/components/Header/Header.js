@@ -22,7 +22,7 @@ function Header()  {
       <div></div>
       <div className={classes.infor}>
         <i className='pi pi-bell'></i>
-        <img src='https://hhq.somee.com/images/638007379495173704_avatar4.png' alt='' />
+        <img src='https://tank8.bsite.net/images/638007379495173704_avatar4.png' alt='' />
         <p>trananhtho2</p>
         <div className='pi pi-chevron-down btn' onClick={() => toggleMenu()}></div>
         <div className={toggle ? classes.display : classes.unDisplay}>

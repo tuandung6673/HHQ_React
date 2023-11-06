@@ -40,8 +40,8 @@ class TaiKhoan extends Component {
     this.query.filter = this.state.filter;
     axios({
       method: 'get',
-      url: 'https://hhq.somee.com/api/Account?' + queryString.stringify(this.query),
-      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
+      url: 'https://tank8.bsite.net/api/Account?' + queryString.stringify(this.query),
+      headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData'))?.token}
     })
     .then(res => {
       const persons = res.data.data.data;
@@ -78,7 +78,7 @@ class TaiKhoan extends Component {
   deleteAccount(id) {
     axios({
       method: 'delete',
-      url: 'https://hhq.somee.com/api/Account/' + id,
+      url: 'https://tank8.bsite.net/api/Account/' + id,
       headers: {'authorization': 'Bearer ' + JSON.parse(localStorage.getItem('userData')).token}
     })
     .then(response => {

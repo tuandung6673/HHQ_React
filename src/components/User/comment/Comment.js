@@ -7,7 +7,7 @@ const queryString = require('query-string');
 function Comment(props) {
   const [commentList, setCommentList] = useState([]);
   const id = props.id
-  const avatarDefault = 'https://hhq.somee.com/images/638007379495173704_avatar4.png'
+  const avatarDefault = 'https://tank8.bsite.net/images/638007379495173704_avatar4.png'
   const query = {
     filter : '',
     offSet : 0,
@@ -17,7 +17,7 @@ function Comment(props) {
   }
   const queryParams = queryString.stringify(query)
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/Comment?${queryParams}`)
+    fetch(`https://tank8.bsite.net/api/Comment?${queryParams}`)
     .then(res => res.json())
     .then(data => {
       loadComment(data)

@@ -28,8 +28,8 @@ function ChiTietGiaoVien() {
   const queryParams = queryString.stringify(query)
   const fetchData = async () => {
     await Promise.all([
-      fetch('https://hhq.somee.com/api/Teacher/' + id),
-      fetch(`https://hhq.somee.com/api/Course?${queryParams}`) 
+      fetch('https://tank8.bsite.net/api/Teacher/' + id),
+      fetch(`https://tank8.bsite.net/api/Course?${queryParams}`) 
     ])
     .then(res => Promise.all(res.map(r => r.json())))
     .then((result) => {

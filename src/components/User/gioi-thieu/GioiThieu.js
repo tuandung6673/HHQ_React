@@ -21,7 +21,7 @@ function GioiThieu() {
   const queryParams = queryString.stringify(params) 
 
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/News?${queryParams}`) 
+    fetch(`https://tank8.bsite.net/api/News?${queryParams}`) 
     .then(res => res.json())
     .then(data => {
       newsList(data);

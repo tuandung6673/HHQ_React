@@ -11,7 +11,7 @@ function GioiThieuChiTiet() {
   const {id} = useParams()
 
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/News/' + id)
+    fetch('https://tank8.bsite.net/api/News/' + id)
       .then(res => res.json())
       .then(data => {
         setDetail(data.data)

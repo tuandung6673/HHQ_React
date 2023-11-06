@@ -12,7 +12,7 @@ function TuyenDung() {
   }
   const queryParams = queryString.stringify(query)
   useEffect(() => {
-    fetch(`https://hhq.somee.com/api/recruit?${queryParams}`)
+    fetch(`https://tank8.bsite.net/api/recruit?${queryParams}`)
     .then(res => res.json())
     .then((data) => {
       getRecruit(data)

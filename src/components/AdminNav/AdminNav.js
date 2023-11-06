@@ -18,7 +18,7 @@ function AdminNav() {
   }
   const queryParams = queryString.stringify(query)
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Menu/GetMenusTree?' + queryParams)
+    fetch('https://tank8.bsite.net/api/Menu/GetMenusTree?' + queryParams)
     .then(res => res.json())
     .then((data) => {
       setMenus(buildTree(data.data.data))

@@ -15,7 +15,7 @@ import Monhoc from "../../components/User/mon-hoc/Monhoc";
 
 function User({children}) {
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Authentication/authenticate', {
+    fetch('https://tank8.bsite.net/api/Authentication/authenticate', {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',

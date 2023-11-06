@@ -4,7 +4,7 @@ import classes from './UserNav.module.scss'
 function UserNav() {
   const [data, setData] = useState([]);
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Menu?Screen=user&Status=1&offSet=0&pageSize=0')
+    fetch('https://tank8.bsite.net/api/Menu?Screen=user&Status=1&offSet=0&pageSize=0')
       .then(res => res.json())
       .then((result) => {
         if(result.status === 'success') {

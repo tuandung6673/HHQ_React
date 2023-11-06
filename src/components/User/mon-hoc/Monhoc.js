@@ -18,7 +18,7 @@ function Monhoc() {
   const queryParams = queryString.stringify(query)
 
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Course/' + id + "?" + queryParams)
+    fetch('https://tank8.bsite.net/api/Course/' + id + "?" + queryParams)
     .then(res => res.json())
     .then((data) => {
       setCourse(data.data)

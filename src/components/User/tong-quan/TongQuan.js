@@ -15,7 +15,7 @@ function TongQuan () {
   const [teacher, setTeacher] = useState([]);
   const [quizz, setQuizz] = useState([]);
   useEffect(() => {
-    fetch('https://hhq.somee.com/api/Home')
+    fetch('https://tank8.bsite.net/api/Home')
     .then(res => res.json())
     .then((data) => {
       getSlide(data);

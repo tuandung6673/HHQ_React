@@ -28,8 +28,8 @@ function GioiThieuRight() {
 
   const fetchData = async () => {
     await Promise.all([
-      fetch(`https://hhq.somee.com/api/News?${queryParams}`),
-      fetch(`https://hhq.somee.com/api/NewsCategory?${queryParams2}`) 
+      fetch(`https://tank8.bsite.net/api/News?${queryParams}`),
+      fetch(`https://tank8.bsite.net/api/NewsCategory?${queryParams2}`) 
     ])
     .then(res => Promise.all(res.map(r => r.json())))
     .then((result) => {
